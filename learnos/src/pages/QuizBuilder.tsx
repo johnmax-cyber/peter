@@ -110,16 +110,6 @@ export default function QuizBuilder() {
     }
   }
 
-  const deleteQuiz = async () => {
-    if (!quiz || !confirm('Delete this quiz? All questions will be removed.')) return
-    const { error } = await supabase.from('quizzes').delete().eq('id', quiz.id)
-    if (error) setError(error.message)
-    else {
-      setQuiz(null)
-      setQuestions([])
-    }
-  }
-
   const deleteQuestion = async (questionId: number) => {
     if (!confirm('Delete this question?')) return
     const { error } = await supabase.from('quiz_questions').delete().eq('id', questionId)
@@ -172,7 +162,7 @@ export default function QuizBuilder() {
 
   return (
     <div className="mx-auto max-w-2xl space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap items-center justify-between gap-3">
         <h1 className="text-2xl font-semibold text-gray-900">{quiz.title}</h1>
         <Link
           to={`/subjects/${subjectId}/topics/${topicId}/quizzes/${quiz.id}/take`}

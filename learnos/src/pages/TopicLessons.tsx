@@ -102,7 +102,7 @@ export default function TopicLessons() {
 
   return (
     <div className="mx-auto max-w-2xl space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap items-center justify-between gap-3">
         <h1 className="text-2xl font-semibold text-gray-900">{topic?.name || 'Topic'}</h1>
         <Link
           to={`/subjects/${subjectId}/topics/${topicId}/lessons/new`}
@@ -125,7 +125,7 @@ export default function TopicLessons() {
           {lessons.map((lesson) => (
             <li
               key={lesson.id}
-              className="flex items-center justify-between rounded-md border border-gray-200 bg-white p-4"
+              className="flex flex-wrap items-center justify-between gap-3 rounded-md border border-gray-200 bg-white p-4"
             >
               <div className="flex items-center gap-3">
                 <button
@@ -146,7 +146,7 @@ export default function TopicLessons() {
                   {lesson.title || 'Untitled'}
                 </Link>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
                 {lesson.difficulty && (
                   <span className="text-xs text-gray-500">{lesson.difficulty}</span>
                 )}
@@ -170,17 +170,17 @@ export default function TopicLessons() {
           <h2 className="text-lg font-medium text-gray-900 mb-4">Quizzes</h2>
           <ul className="space-y-2">
             {quizzes.map((quiz) => (
-              <li
-                key={quiz.id}
-                className="flex items-center justify-between rounded-md border border-gray-200 bg-white p-4"
+            <li
+              key={quiz.id}
+              className="flex flex-wrap items-center justify-between gap-3 rounded-md border border-gray-200 bg-white p-4"
+            >
+              <Link
+                to={`/subjects/${subjectId}/topics/${topicId}/quizzes/${quiz.id}/take`}
+                className="text-sm font-medium text-gray-900 hover:underline"
               >
-                <Link
-                  to={`/subjects/${subjectId}/topics/${topicId}/quizzes/${quiz.id}/take`}
-                  className="text-sm font-medium text-gray-900 hover:underline"
-                >
-                  {quiz.title}
-                </Link>
-                <div className="flex items-center gap-2">
+                {quiz.title}
+              </Link>
+              <div className="flex flex-wrap items-center gap-2">
                   <Link
                     to={`/subjects/${subjectId}/topics/${topicId}/quizzes/${quiz.id}`}
                     className="text-xs text-accent hover:underline"
@@ -200,7 +200,7 @@ export default function TopicLessons() {
         </div>
       )}
 
-      {!quiz && (
+      {quizzes.length === 0 && (
         <Link
           to={`/subjects/${subjectId}/topics/${topicId}/quizzes/new`}
           className="inline-block rounded-md bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200"

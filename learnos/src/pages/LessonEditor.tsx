@@ -112,10 +112,10 @@ export default function LessonEditor() {
         </div>
       )}
 
-      <div className="flex-1 rounded-lg border border-gray-200 bg-white">
-        <div className="flex h-full">
-          <div className="flex w-1/2 flex-col border-r border-gray-200">
-            <form onSubmit={handleSave} className="flex-1 p-4">
+      <div className="flex-1 rounded-lg border border-gray-200 bg-white overflow-hidden">
+        <div className="flex h-full flex-col md:flex-row">
+          <div className="flex w-full flex-col border-b border-gray-200 md:w-1/2 md:border-b-0 md:border-r">
+            <form onSubmit={handleSave} className="flex-1 overflow-y-auto p-4">
               <div className="mb-4">
                 <label htmlFor="title" className="block text-sm font-medium text-gray-700">
                   Title
@@ -202,7 +202,7 @@ export default function LessonEditor() {
             </form>
           </div>
 
-          <div className="w-1/2 overflow-y-auto p-4">
+          <div className="w-full overflow-y-auto border-t border-gray-200 p-4 md:w-1/2 md:border-t-0">
             <div
               className="prose prose-sm max-w-none text-gray-800"
               dangerouslySetInnerHTML={{ __html: marked(content || 'Nothing to preview yet...') }}

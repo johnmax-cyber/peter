@@ -184,20 +184,26 @@ export default function Subjects() {
             <div key={subject.id} className="rounded-lg border border-gray-200 bg-white shadow-sm">
               <div className="flex items-center justify-between p-4 border-b border-gray-200">
                 <h3 className="text-lg font-medium text-gray-900">{subject.name}</h3>
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => toggleExpand(subject.id)}
-                    className="rounded-md bg-accent px-3 py-1.5 text-sm font-medium text-white hover:bg-accent-hover"
-                  >
-                    {expandedSubjectId === subject.id ? 'Hide Topics' : '+ Add Topic'}
-                  </button>
-                  <button
-                    onClick={() => deleteSubject(subject.id)}
-                    className="rounded-md bg-red-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-red-700"
-                  >
-                    Delete
-                  </button>
-                </div>
+                <div className="flex flex-wrap gap-2">
+                <Link
+                  to={`/subjects/${subject.id}/flashcards`}
+                  className="rounded-md bg-green-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-green-700"
+                >
+                  Flashcards
+                </Link>
+                <button
+                  onClick={() => toggleExpand(subject.id)}
+                  className="rounded-md bg-accent px-3 py-1.5 text-sm font-medium text-white hover:bg-accent-hover"
+                >
+                  {expandedSubjectId === subject.id ? 'Hide Topics' : '+ Add Topic'}
+                </button>
+                <button
+                  onClick={() => deleteSubject(subject.id)}
+                  className="rounded-md bg-red-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-red-700"
+                >
+                  Delete
+                </button>
+              </div>
               </div>
 
               {expandedSubjectId === subject.id && (

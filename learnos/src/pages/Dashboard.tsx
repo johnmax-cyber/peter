@@ -24,10 +24,16 @@ export default function Dashboard() {
       <h1 className="text-2xl font-semibold text-gray-900">Dashboard</h1>
 
       <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
-        <h2 className="text-lg font-medium text-gray-900">Day 1 streak</h2>
+        <h2 className="text-lg font-medium text-gray-900">Study Streak</h2>
         <p className="mt-1 text-sm text-gray-600">
-          Keep it up! Your streak increases each day you study.
+          View your streak and weekly progress on the Progress page.
         </p>
+        <a
+          href="/progress"
+          className="mt-4 inline-block rounded-md bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-hover"
+        >
+          View Progress
+        </a>
       </div>
 
       <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
